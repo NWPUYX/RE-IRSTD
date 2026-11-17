@@ -1,0 +1,8 @@
+{
+  "original_checkpoint_sha256": "c0b0a07ffbf4e6b01fe3cc98a74928c399a0e05f0f09baf831218a0bc72860c4",
+  "released_weights_sha256": "80865e0c960ff5a0d26f12cd36aaa3298c571a4ae3700baef35115266b2bed38",
+  "weights": "Unmodified model state_dict; original non-model metadata excluded",
+  "parameters": 808952,
+  "selected_epoch": 1,
+  "source_F1_threshold": 0.5791078209877014
+}

@@ -1,0 +1,32 @@
+{
+  "device": "cuda",
+  "parameters": 808952,
+  "state_tensors_equal": true,
+  "preprocessing_equal": true,
+  "cases": [
+    {
+      "input": "source_validation_frame",
+      "maximum_absolute_difference": {
+        "center_logits": 0.0,
+        "offsets": 0.0,
+        "log_size": 0.0,
+        "auxiliary_center_logits": 0.0,
+        "main_peak_logits": 0.0
+      },
+      "decoded_proposals_equal": true
+    },
+    {
+      "input": "non_square",
+      "maximum_absolute_difference": {
+        "center_logits": 0.0,
+        "offsets": 0.0,
+        "log_size": 0.0,
+        "auxiliary_center_logits": 0.0,
+        "main_peak_logits": 0.0
+      },
+      "decoded_proposals_equal": true
+    }
+  ],
+  "new_training_runs": 0,
+  "scope": "Portability equivalence checks, not a new benchmark run"
+}

@@ -1,0 +1,61 @@
+{
+  "evidence": {
+    "enabled": true,
+    "annuli": [
+      [
+        3,
+        9
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        9,
+        25
+      ]
+    ],
+    "sigma_floor": 0.001,
+    "clip_abs": 8.0,
+    "statistics_dtype": "float64_integral_to_float32",
+    "padding": "reflect",
+    "evidence_channels": 6,
+    "condition_channels": 4
+  },
+  "channels": [
+    24,
+    48,
+    96,
+    192
+  ],
+  "encoder_blocks_per_stage": 2,
+  "decoder_blocks_per_stage": 2,
+  "full_resolution_blocks": 2,
+  "norm": "group_norm",
+  "norm_groups": 8,
+  "norm_epsilon": 1e-05,
+  "norm_affine": true,
+  "block": {
+    "kind": "relative_evidence",
+    "kernel_size": 3,
+    "dilations": [
+      1,
+      2,
+      3
+    ],
+    "zero_sum_kernel": true,
+    "conditional_mixing": true,
+    "gate_hidden": 8,
+    "gate_last_layer_zero_init": true,
+    "expansion": 2,
+    "residual_gamma_init": 0.1,
+    "depthwise_padding": "reflect"
+  },
+  "heads": {
+    "hidden_channels": 24,
+    "center_init_probability": 0.01,
+    "auxiliary_center": true,
+    "offsets": true,
+    "size_reference": "source_train_box_median"
+  }
+}

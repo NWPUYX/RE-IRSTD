@@ -1,0 +1,114 @@
+[
+  {
+    "stage_id": 0,
+    "stage": "Initial detector",
+    "module_or_script": "train_irstd.py",
+    "executed_epochs": "55",
+    "executed_stage_updates": 57530,
+    "descendant_input": "Epoch 5 (stored index 4)"
+  },
+  {
+    "stage_id": 1,
+    "stage": "Geometry repair",
+    "module_or_script": "irstd_geometry_repair.run",
+    "executed_epochs": "3",
+    "executed_stage_updates": 3138,
+    "descendant_input": "Last raw/EMA/optimizer"
+  },
+  {
+    "stage_id": 2,
+    "stage": "Balanced geometry",
+    "module_or_script": "irstd_geometry_balance.run",
+    "executed_epochs": "2 additional",
+    "executed_stage_updates": 2092,
+    "descendant_input": "Global epoch 5"
+  },
+  {
+    "stage_id": 3,
+    "stage": "Target size routing",
+    "module_or_script": "irstd_t_size.run",
+    "executed_epochs": "2",
+    "executed_stage_updates": 2092,
+    "descendant_input": "Last state at epoch 2"
+  },
+  {
+    "stage_id": 4,
+    "stage": "Native precision",
+    "module_or_script": "irstd_native_precision.run",
+    "executed_epochs": "1 additional",
+    "executed_stage_updates": 1046,
+    "descendant_input": "Global epoch 3"
+  },
+  {
+    "stage_id": 5,
+    "stage": "Guarded background",
+    "module_or_script": "irstd_background_center.run",
+    "executed_epochs": "2",
+    "executed_stage_updates": 4182,
+    "descendant_input": "Epoch 2"
+  },
+  {
+    "stage_id": 6,
+    "stage": "Head interpolation",
+    "module_or_script": "background_interpolation.py --refine",
+    "executed_epochs": "0",
+    "executed_stage_updates": 0,
+    "descendant_input": "$\\alpha=0.28125$"
+  },
+  {
+    "stage_id": 7,
+    "stage": "Robust target",
+    "module_or_script": "irstd_robust_t.run",
+    "executed_epochs": "1",
+    "executed_stage_updates": 2091,
+    "descendant_input": "Epoch 1"
+  },
+  {
+    "stage_id": 8,
+    "stage": "Source calibration",
+    "module_or_script": "population_T_source_screen.py",
+    "executed_epochs": "0",
+    "executed_stage_updates": 0,
+    "descendant_input": "84 train frames"
+  },
+  {
+    "stage_id": 9,
+    "stage": "Target correspondence",
+    "module_or_script": "irstd_population_t.run",
+    "executed_epochs": "2",
+    "executed_stage_updates": 4182,
+    "descendant_input": "Epoch 1"
+  },
+  {
+    "stage_id": 10,
+    "stage": "Scene scale",
+    "module_or_script": "irstd_scene_scale.run",
+    "executed_epochs": "4",
+    "executed_stage_updates": 8364,
+    "descendant_input": "Epoch 2"
+  },
+  {
+    "stage_id": 11,
+    "stage": "Integral statistics",
+    "module_or_script": "integral_joint_training.py",
+    "executed_epochs": "2",
+    "executed_stage_updates": 4182,
+    "descendant_input": "Epoch 1"
+  },
+  {
+    "stage_id": 12,
+    "stage": "Peak calibration",
+    "module_or_script": "peak_calibrated_training.py",
+    "executed_epochs": "6",
+    "executed_stage_updates": 12546,
+    "descendant_input": "Epoch 6"
+  },
+  {
+    "stage_id": 13,
+    "stage": "Consistent teachers",
+    "module_or_script": "consistent_teacher_training.py",
+    "executed_epochs": "2",
+    "executed_stage_updates": 4182,
+    "descendant_input": "Epoch 1"
+  }
+]

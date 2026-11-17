@@ -1,0 +1,90 @@
+{
+  "name": "consistent_teacher_v1",
+  "initialization": "source-selected peak calibrated best; prior failed source stages retained; fresh AdamW",
+  "epochs": 2,
+  "batch": 4,
+  "workers": 2,
+  "precision": "float32",
+  "learning_rates": {
+    "T_fusion_center_aux": 5e-05,
+    "offset_size": 5e-05,
+    "stem_context": 1e-05
+  },
+  "weight_decay": 0.0005,
+  "gradient_clip": 10.0,
+  "native_weight": 4.0,
+  "trainable_prefixes": [
+    "all_original_parameters"
+  ],
+  "source_noise_factors": [
+    4,
+    16
+  ],
+  "augmentation_mix": "five equal classes: noise, background+noise, clean shrink, clean enlarge, full-frame mosaic2/3/4",
+  "geometry": {
+    "enabled": true,
+    "scale_jitter": [
+      0.25,
+      2.0
+    ],
+    "shift_fraction": 0.125,
+    "minimum_box_side": 1.0,
+    "maximum_attempts": 32,
+    "horizontal_flip_probability": 0.5
+  },
+  "ignore_synthetic_padding": true,
+  "soft_relative_evidence": false,
+  "valid_region_evidence": false,
+  "masked_group_norm": false,
+  "size_feature_source": "T",
+  "protection_margin": 14,
+  "transition_width": 8,
+  "probe_samples_per_group": 12,
+  "probe_scales": [
+    0.6,
+    1.4
+  ],
+  "giou_weight": 0.1,
+  "native_peak_weight": 0.5,
+  "native_shape_weight": 0.1,
+  "native_negative_weight": 0.05,
+  "augmented_peak_weight": 0.05,
+  "native_geometry_teacher_weight": 0.25,
+  "postprocess": {
+    "floor": 1e-05,
+    "pre_nms": 1000,
+    "nms_iou": 0.5,
+    "max_detections": 100
+  },
+  "evidence_arithmetic": "local_integral_FP64_to_FP32",
+  "teacher_model": "frozen population_T source-AP epoch1",
+  "population_norm_mode": "T_only",
+  "population_moments_frozen": true,
+  "geometry_regression_weight": 4.0,
+  "native_T_local_weight": 0.0,
+  "paired_T_local_weight": 1.0,
+  "native_T_global_weight": 0.0,
+  "T_channel_RMS_floor": 0.25,
+  "normalization_gamma_bias_weight_decay": 0.0,
+  "ordinary_weight_decay": 0.0005,
+  "selection": "all_source_gates_then_number_of_gates_then_source_AP50",
+  "maximum_validation_checks": 2,
+  "clean_teacher": "training-GT-IoU selection between scene E2 and integral E1 raw-main native outputs",
+  "noise_teacher": "frozen integral E1; same numerical evidence and calibrated score map",
+  "photo_teacher_weights": {
+    "peak": 0.5,
+    "shape": 0.1,
+    "hard_negative_union": 0.05,
+    "geometry": 0.25
+  },
+  "teacher_T_feature_matching": false,
+  "decoder": "raw_main_peaks_calibrated_score_map",
+  "locked_readout_weight": 0.25,
+  "native_location_KL_weight": 0.5,
+  "native_location_temperature": 0.5,
+  "all_augmented_positive_weight": 0.0,
+  "positive_logit_margin": 2.0,
+  "native_teacher_selection": "source_train_GT_neighborhood_clipped_box_IoU_mean; legacy on tie",
+  "geometry_positive_weight": 0.1,
+  "photo_positive_extra_weight": 0.0
+}
