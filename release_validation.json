@@ -28,5 +28,6 @@
     }
   ],
   "new_training_runs": 0,
-  "scope": "Portability equivalence checks, not a new benchmark run"
+  "scope": "Portability equivalence checks, not a new benchmark run",
+  "cpu_release_tests": 6
 }

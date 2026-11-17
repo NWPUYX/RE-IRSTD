@@ -1,5 +1,8 @@
 """CPU checks: published weights, affine evidence, plateaus, and box metrics."""
 import unittest
+import json
+import hashlib
+from pathlib import Path
 import numpy as np
 import torch
 from model import load_model
@@ -13,6 +16,13 @@ class ReleaseTests(unittest.TestCase):
     def setUpClass(cls):
         torch.set_num_threads(2)
         cls.model = load_model()
+
+    def test_release_file_hashes(self):
+        root = Path(__file__).resolve().parent
+        manifest = json.loads((root / 'release_files.json').read_text())
+        for name, record in manifest.items():
+            with self.subTest(file=name):
+                self.assertEqual(hashlib.sha256((root / name).read_bytes()).hexdigest(), record['sha256'])
 
     def test_checkpoint_and_forward(self):
         self.assertEqual(sum(p.numel() for p in self.model.parameters()), 808952)
